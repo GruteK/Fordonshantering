@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Fordonshantering</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f1f1f">
+<link rel="icon" type="image/png" sizes="192x192" href="ikon-192.png">
+<link rel="apple-touch-icon" href="ikon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Fordon">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #1f1f1f; overflow: hidden; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+<body>
+<iframe id="ram" allow="clipboard-write; camera; geolocation" title="Fordonshantering"></iframe>
+<script>
+  // Mobilsidan i appen. Live-adressen (samma som index.html använder).
+  var EXEC = 'https://script.google.com/macros/s/AKfycbw2ZB44Lkf-EcLBybVIlF54K61-3_VakQB3HcBGa-SybSOxVv2gFLdnem4ZFbVFBCvp/exec';
+  var q = new URLSearchParams(location.search);
+  if (!q.has('sida') && !q.has('vy')) q.set('sida', 'mobil');
+  document.getElementById('ram').src = EXEC + '?' + q.toString();
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+</script>
+</body>
+</html>
