@@ -1,7 +1,7 @@
 // Liten service worker så att telefonen godkänner sidan som app.
 // Sparar bara appens skal (ram + ikoner). All data hämtas alltid färsk från Google.
-var CACHE = 'fordon-app-v1';
-var SKAL = ['app.html', 'manifest.webmanifest', 'ikon-192.png', 'ikon-512.png', 'ikon-180.png'];
+var CACHE = 'fordon-app-v2';
+var SKAL = ['app.html', 'manifest.webmanifest', 'ikon-mork-192.png', 'ikon-mork-512.png', 'ikon-mork-180.png'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(SKAL); }));
